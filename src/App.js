@@ -1,57 +1,52 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  NavLink
+  Route
 } from 'react-router-dom';
 import './App.css';
-import HomeButton from './HomeButton.js'
-
-const s = {color: 'grey', textDecoration: 'none', cursor: 'default'}
+import NavBar from './components/NavBar'
 
 function App() {
   return(
     <div>
-      <NavLink exact to="/" style={{margin: '5px'}} activeStyle={s}>HOME</NavLink>
-      <NavLink to="/about" style={{margin: '5px'}} activeStyle={s}>ABOUT</NavLink>
-      <NavLink to="/user" style={{margin: '5px'}} activeStyle={s}>USERS</NavLink>
+      <NavBar />
       <div style={{fontSize: '3em', margin: '25px'}}>
         <Switch>
-          <Route exact path="/" component={Home}></Route>
-          <Route exact path="/about" component={About}></Route>
-          <Route exact path="/user/" component={Users}></Route>
-          <Route path="/user/:name" component={User}></Route>
+          <Route exact path="/">
+            <Intro />
+          </Route>
+          <Route exact path="/education" component={Education}></Route>
+          <Route exact path="/experience/" component={Experience}></Route>
+          <Route path="/experience/:name" component={User}></Route>
           <Route path="/" component={PageNotFound}></Route>
         </Switch>
       </div>
-      <HomeButton/>
     </div>
   );  
 }
 
-function Home() {
+function Intro() {
   return(
     <h2>Welcome to this page</h2>
   )
 }
 
-function About() {
+function Education() {
   return(
-    <h2>About</h2>
+    <h2>Education</h2>
   );
 }
 
-function Users() {
+function Experience() {
   return(
-    <h2>Users</h2>
+    <h2>Experience</h2>
   );
 }
 
 function User({match}) {
   return(
     <div>
-      <h2>Users</h2>
+      <h2>Experience</h2>
       <div>Hello, {match.params.name}</div>
     </div>
   );
@@ -59,7 +54,7 @@ function User({match}) {
 
 function PageNotFound() {
   return(
-    <h2>404 Page Not Found :)</h2>
+    <h2>404 Page Not Found</h2>
   )
 }
 
