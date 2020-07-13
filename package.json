@@ -1,6 +1,5 @@
 {
   "name": "react-router",
-  "homepage": "https://bard-bringeland.github.io/routing",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
